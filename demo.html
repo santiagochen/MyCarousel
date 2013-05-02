@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>MyCarousel Plugin Demo</title>    
+    <style type="text/css">
+		.wrap{ overflow:hidden; display:block; width:310px;margin:0 auto;}
+        ul{ list-style:none; display:block; width:auto; height:100px; margin:0; padding:0;}
+		li{ display:block; width:100px; height:100px; float:left; text-align:center; vertical-align:middle; font-size:40px; margin-left:2px; margin:2px; padding:0;}
+
+    </style>
+   
+</head>
+<body>
+
+<div class="wrap">
+<ul id="carou">
+<li id="test">1<img src="image/1.jpg" width="100" height="100"/></li>
+<li>2<img src="image/2.jpg" width="100" height="100"/></li>
+<li>3<img src="image/3.jpg" width="100" height="100"/></li>
+<li>4<img src="image/4.jpg" width="100" height="100"/></li>
+<li>5<img src="image/5.jpg" width="100" height="100"/></li>
+<li>6<img src="image/6.jpg" width="100" height="100"/></li>
+<li>7<img src="image/7.jpg" width="100" height="100"/></li>
+<li>8<img src="image/8.jpg" width="100" height="100"/></li>
+</ul>
+</div>
+
+<div style="width: 300px; margin:0 auto;">
+<button id="lbtn">&lt;</button>
+<button id="rbtn" style="margin-left:220px;">&gt;</button>
+</div>
+
+<script type="text/javascript" src="mycarousel_compressed.js"></script>
+<script type="text/javascript">
+	
+    MyCarousel.init({
+		target: document.getElementById("carou"),
+		movestep: 2,
+		automove:true,
+		timer: 3,
+		//killanimate:true,
+		//anti:true,
+		});
+	
+	var lbtn = document.getElementById("lbtn");
+	var rbtn = document.getElementById("rbtn");
+	
+	lbtn.onclick = function(){
+		MyCarousel.move();
+		}
+	rbtn.onclick = function(){
+		MyCarousel.antimove();
+		}
+	
+</script>
+</body>
+</html>
