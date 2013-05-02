@@ -1,11 +1,12 @@
 /*
 * MyCarousel Javascript Plugin
-* version: 0.0.1
+* version: 0.0.2
 * Date: 05/02/2013
 * author: santiago chen
 * email: santiago1209@foxmail.com
 * more on https://github.com/santiagochen
-* 
+* Tested on the below browsers: Chrome, Firefox, Safari, &IE6-IE9. 
+*
 * --The USE of the MyCarousel plugin--
 *
 * Export 1: MyCarousel.init(); initialize for the carousel image;
@@ -91,7 +92,7 @@ var MyCarousel = MyCarousel||{};
 		
 		tarObj.cell = {
 			width: tarObj.holder.children[0].clientWidth,
-			height: tarObj.holder.children[0].clientHeight,
+			height: tarObj.holder.children[0].clientHeight
 			}
 		//get value for tarObj.width
 		getHolderWidth();
@@ -236,15 +237,14 @@ var MyCarousel = MyCarousel||{};
 		for(var z=0; z<tarObj.holder.children.length; z++){
 			tarObj[("child"+(z+1))]=tarObj.holder.children[z]; //child+number
 			tempWidth+=tarObj.holder.children[z].clientWidth;
-			if(window.getComputedStyle(tarObj[("child"+(z+1))]).marginLeft){
-				tempWidth+=parseInt(window.getComputedStyle(tarObj[("child"+(z+1))]).marginLeft);
-				}
-			if(window.getComputedStyle(tarObj[("child"+(z+1))]).marginRight){
-				tempWidth+=parseInt(window.getComputedStyle(tarObj[("child"+(z+1))]).marginRight)
-				}
+			var _marginLeft = tarObj[("child"+(z+1))].currentStyle?parseInt(tarObj[("child"+(z+1))].currentStyle.marginLeft):parseInt(window.getComputedStyle(tarObj[("child"+(z+1))]).marginLeft);
+			var _marginRight = tarObj[("child"+(z+1))].currentStyle?parseInt(tarObj[("child"+(z+1))].currentStyle.marginRight):parseInt(window.getComputedStyle(tarObj[("child"+(z+1))]).marginRight);
+			if(_marginLeft){tempWidth+=_marginLeft;}
+			if(_marginRight){tempWidth+=_marginRight;}			
+			
 			}
 		//set the viewport's width by tarObj.width;
-		tarObj.holder.style.width = tempWidth+"px";
+		tarObj.holder.style.width = tempWidth+10+"px"; //plus 10px to fix the IE6 not-enough-width Bug
 		}
 	
 	var animateMove = function(target,step,manti){

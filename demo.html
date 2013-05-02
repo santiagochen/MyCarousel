@@ -4,10 +4,10 @@
 <head>
     <title>MyCarousel Plugin Demo</title>    
     <style type="text/css">
-		.wrap{ overflow:hidden; display:block; width:310px;margin:0 auto;}
+		.wrap{ overflow:hidden; display:block; width:310px;margin:0 auto;position:relative; left:0px; top:0px;}/*position relative could fixed IE7&IE6 overflow hidden fail problem*/
         ul{ list-style:none; display:block; width:auto; height:100px; margin:0; padding:0;}
 		li{ display:block; width:100px; height:100px; float:left; text-align:center; vertical-align:middle; font-size:40px; margin-left:2px; margin:2px; padding:0;}
-
+		img{ margin:0; padding:0;}
     </style>
    
 </head>
@@ -38,7 +38,7 @@
 		target: document.getElementById("carou"),
 		movestep: 2,
 		automove:true,
-		timer: 3,
+		timer: 3
 		//killanimate:true,
 		//anti:true,
 		});
